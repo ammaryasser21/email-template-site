@@ -1,0 +1,36 @@
+.about{
+    color:white;
+}
+
+.about {
+    padding: 2rem;
+    color: white;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  
+  p {
+    text-wrap: pretty;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: rgb(148 163 184);
+  }
+  .aboutMain{
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgb(148 163 184 / 0.8);
+    margin-bottom: 2rem;
+  }
+  
