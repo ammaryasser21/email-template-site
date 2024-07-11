@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 
 const Sidebar = () => {
   const [activeLink, setActiveLink] = useState('');
+  const [openSubMenu, setOpenSubMenu] = useState({});
   const location = useLocation();
 
   useEffect(() => {
@@ -11,8 +14,15 @@ const Sidebar = () => {
     setActiveLink(path);
   }, [location]);
 
+  const toggleSubMenu = (path) => {
+    setOpenSubMenu((prevState) => ({
+      ...prevState,
+      [path]: !prevState[path],
+    }));
+  };
+
   const renderSubLinks = (template, subLinks) => (
-    <ul>
+    <ul className={openSubMenu[template] ? 'open' : ''}>
       {subLinks.map((subLink) => (
         <li key={subLink.path} className={location.pathname === subLink.path ? 'active' : ''}>
           <Link to={subLink.path}>{subLink.name}</Link>
@@ -23,29 +33,38 @@ const Sidebar = () => {
 
   const links = [
     {
-      name: 'Template 1',
-      path: '/template1',
+      name: 'Quickstart',
+      path: '/quickstart',
       subLinks: [
-        { name: 'Sub Link 1', path: '/template1/sub1' },
-        { name: 'Sub Link 2', path: '/template1/sub2' },
+        { name: 'Set up', path: '/quickstart/setup' },
+        { name: 'Import data', path: '/quickstart/import-data' },
+        { name: 'Layout', path: '/quickstart/layout' },
+        { name: 'Style data', path: '/quickstart/style-data' },
+        { name: 'Add tooltips', path: '/quickstart/add-tooltips' },
       ],
     },
     {
-      name: 'Template 2',
-      path: '/template2',
+      name: 'Resources',
+      path: '/resources',
       subLinks: [
-        { name: 'Sub Link 1', path: '/template2/sub1' },
-        { name: 'Sub Link 2', path: '/template2/sub2' },
+        { name: 'Resource 1', path: '/resources/resource1' },
+        { name: 'Resource 2', path: '/resources/resource2' },
       ],
     },
   ];
 
   return (
-    <aside className={`sidebar`}>
+    <aside className="sidebar">
       <ul>
         {links.map((link) => (
           <li key={link.path} className={activeLink === link.path.split('/')[1] ? 'active' : ''}>
-            <Link to={link.path}>{link.name}</Link>
+            <button onClick={() => toggleSubMenu(link.path)}>
+              <FontAwesomeIcon
+                icon={openSubMenu[link.path] ? faChevronDown : faChevronRight}
+                className={`icon ${openSubMenu[link.path] ? 'open' : ''}`}
+              />
+              {link.name}
+            </button>
             {renderSubLinks(link.path, link.subLinks)}
           </li>
         ))}

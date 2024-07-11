@@ -4,7 +4,7 @@
 
 .about {
     padding: 2rem;
-    color: white;
+    color: var(--text-color);
     text-align: left;
     max-width: 800px;
     margin: 0 auto;
@@ -13,24 +13,38 @@
   h2 {
     font-size: 2rem;
     line-height: 4rem;
+    color:var(--text-color);
   }
   
   h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
+    padding: 1rem 0;
+    color: var(--p-color);
+    padding-top: 2rem;
+    margin-top: 2rem;
   }
   
-  p {
+
+
+  p{
     text-wrap: pretty;
     font-size: 1rem;
+    width: 53rem;
     margin-bottom: 1rem;
-    line-height: 1.6;
-    color: rgb(148 163 184);
+    line-height: 2;
+    color: var(--text-scolor);
+    background-color: var(--background-s);
+    padding: 1rem 2rem;
+    border-radius: 5px;
   }
-  .aboutMain{
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgb(148 163 184 / 0.8);
-    margin-bottom: 2rem;
+
+
+  .aboutMain p{
+    text-wrap: pretty;
+    font-size: 1rem;
+    width: 53rem;
+    margin-bottom: 1rem;
+    line-height: 3;
+    color: var(--text-scolor);
+    background-color: transparent;
+    padding: 1rem 0;
   }
-  
